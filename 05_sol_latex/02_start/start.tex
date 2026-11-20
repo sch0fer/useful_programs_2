@@ -1,0 +1,205 @@
+\documentclass[12pt, a4paper]{article}
+
+% Pakiety językowe i kodowanie
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+% Pakiety do formatowania strony i układu
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+
+% Konfiguracja linków
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+
+% Konfiguracja listingu kodu + obsługa polskich znaków UTF-8 w listingach
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.96,0.96,0.96}
+
+\lstdefinestyle{code_style}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    extendedchars=true,
+    literate=
+        {ą}{{\k{a}}}1 {ć}{{\'c}}1 {ę}{{\k{e}}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1
+        {ó}{{\'o}}1 {ś}{{\'s}}1 {ź}{{\'z}}1 {ż}{{\.z}}1
+        {Ą}{{\k{A}}}1 {Ć}{{\'C}}1 {Ę}{{\k{E}}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1
+        {Ó}{{\'O}}1 {Ś}{{\'S}}1 {Ź}{{\'Z}}1 {Ż}{{\.Z}}1
+}
+\lstset{style=code_style}
+
+% Definicje symboli do tabeli i zadań
+\newcommand{\cmark}{\textcolor{green!60!black}{\ding{51}}}
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}
+
+\title{\textbf{Programy użytkowe -- pierwsze starcie}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Czym są Programy użytkowe?}
+Programy użytkowe to zajęcia przygotowujące studentów do odpowiedzialnego korzystania z dobrodziejstw XXI-wiecznej technologii.
+
+\section{Zakres materiału}
+Na zajęciach studenci będą pracować z licznymi technologiami, takimi jak:
+\begin{enumerate}
+    \item \textbf{markdown} -- do tworzenia sformatowanego tekstu,
+    \item \textbf{\href{http://colab.research.google.com/}{Colab}} -- do tworzenia kodu w języku Python prosto z przeglądarki oraz wiele więcej,
+    \item \textbf{Git oraz \href{https://github.com/}{GitHub}} -- do zarządzania i publikowania projektów,
+    \item \textbf{VSCode} -- do edytowania tekstu.
+\end{enumerate}
+
+\section{Markdown}
+Markdown to tzw. \textit{język znaczników}. Pozwala on na tworzenie sformatowanych dokumentów tekstowych za pomocą stosunkowo prostej składni. Do podstawowych znaczników formatujących należą:
+
+\begin{itemize}
+    \item Nagłówki tworzy się za pomocą znaków „\#” -- im więcej, \sout{maksymalnie 6}, tym „mniejszy” nagłówek:
+\end{itemize}
+
+\begin{lstlisting}[caption=Nagłówki w Markdown]
+# Nagłówek 1
+## Nagłówek 2
+### Nagłówek 3
+#### Nagłówek 4
+##### Nagłówek 5
+###### Nagłówek 6
+\end{lstlisting}
+
+\begin{itemize}
+    \item Tekst można też formatować za pomocą „*”:
+\end{itemize}
+
+\begin{lstlisting}[caption=Formatowanie tekstu]
+*Ten tekst będzie pochylony*
+**Ten tekst będzie pogrubiony**
+***Ten tekst będzie i pochylony, i pogrubiony***
+\end{lstlisting}
+
+\begin{itemize}
+    \item Przydatne mogą być też przekreślenia:
+\end{itemize}
+
+\begin{lstlisting}[caption=Przekreślenie]
+~~Tak się tworzy przekreślony tekst~~
+\end{lstlisting}
+
+\section{Zadania}
+\begin{itemize}
+    \item[\cmark] Stworzyć plik \texttt{README.md}
+    \item[$\square$] Użyć podstawowych formatowań formatu \texttt{.md}
+    \item[$\square$] Napisać kod Python
+\end{itemize}
+
+\section{Zwykły tekst vs Markdown vs HTML}
+
+\subsection{Porównanie formatów plików: TXT, Markdown i HTML}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\small
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}p{4cm}|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+\hline
+\textbf{Cecha} & \textbf{Zwykły tekst (TXT)} & \textbf{Markdown (MD)} & \textbf{HTML} \\
+\hline
+\textbf{Łatwość użycia} & $\star\star\star\star\star$ Bardzo łatwy & $\star\star\star\star$ Łatwy & $\star\star$ Wymaga znajomości \\
+\hline
+\textbf{Learning curve} & Minimalna & Niska & Średnia do wysokiej \\
+\hline
+\textbf{Czytelność w surowej postaci} & Bardzo wysoka & Wysoka & Średnia \\
+\hline
+\textbf{Obsługa nagłówków} & \xmark & \cmark & \cmark \\
+\hline
+\textbf{Obsługa list} & \xmark & \cmark & \cmark \\
+\hline
+\textbf{Obsługa tabel} & \xmark & \cmark & \cmark \\
+\hline
+\textbf{Obsługa obrazów} & \xmark & \cmark & \cmark \\
+\hline
+\textbf{Obsługa linków} & Tylko jako tekst & \cmark & \cmark \\
+\hline
+\textbf{Obsługa stylów (kolory, czcionki)} & \xmark & Ograniczona & \cmark \\
+\hline
+\textbf{Możliwość tworzenia układów stron} & \xmark & \xmark & \cmark \\
+\hline
+\textbf{Rozmiar plików} & Najmniejsze & Małe & Zwykle większe \\
+\hline
+\textbf{Popularne zastosowania} & Notatki, logi, konfiguracje & Dokumentacja, README, notatki techniczne & Strony internetowe, aplikacje webowe \\
+\hline
+\textbf{Wsparcie przez edytory} & Praktycznie wszystkie & Bardzo szerokie & Bardzo szerokie \\
+\hline
+\textbf{Możliwość automatycznej konwersji} & Ograniczona & Łatwa konwersja do HTML, PDF, DOCX & Łatwa konwersja do PDF \\
+\hline
+\end{tabularx}
+\caption{Porównanie formatów plików TXT, Markdown oraz HTML}
+\end{table}
+
+\section{Python}
+Python to interpretowany język skryptowy, który dzięki swojej prostej składni jest idealnym wyborem dla początkujących użytkowników, którzy chcą zacząć tworzyć proste programy. Dzięki szerokiej bazie bibliotek można go użyć do niemal wszystkiego.
+
+Prosty program liczący średnią ocen napisany w języku Python:
+\begin{lstlisting}[language=Python, caption=Średnia ocen w Pythonie]
+grades = [3,4,2,5,1,3]
+grades_sum = 0
+for grade in grades:
+    grades_sum += grade
+average = grades_sum/len(grades)
+print(average)
+\end{lstlisting}
+
+\section{LaTeX}
+Format markdown pozwala na embedowanie formatu LaTeX wprost do dokumentów \texttt{.md}. Pozwala to na tworzenie np. prac naukowych czy też książek. Format LaTeX może występować w jednej linii z tekstem:
+\begin{itemize}
+    \item Twierdzenie Pitagorasa: $ a^2+b^2=c^2 $
+    \item Wzór na miejsca zerowe funkcji kwadratowej: $ x_{1,2}=\frac{-b \pm \sqrt{b^2-4ac}}{2a} $
+    \item Definicja sinusa dowolnego kąta: $ \sin{\alpha}=\frac{y}{r} $
+\end{itemize}
+
+lub być zupełnie osobnym blokiem tekstu:
+
+$$ a^2+b^2=c^2 $$
+$$ x_{1,2}=\frac{-b \pm \sqrt{b^2-4ac}}{2a} $$
+$$ \sin{\alpha}=\frac{y}{r} $$
+
+\section{Obrazki}
+W formacie markdown można wyświetlać również obrazy:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{wykres.png}
+    \caption{Wykres zależności y od x}
+    \label{fig:wykres}
+\end{figure}
+
+\end{document}

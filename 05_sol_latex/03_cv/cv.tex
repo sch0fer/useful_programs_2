@@ -1,0 +1,196 @@
+% A mashup of hipstercv, friggeri and twenty cv
+% https://www.latextemplates.com/template/twenty-seconds-resumecv
+% https://www.latextemplates.com/template/friggeri-resume-cv
+
+\documentclass[lighthipster]{simplehipstercv}
+% dostępne opcje: darkhipster, lighthipster, pastel, allblack, grey, verylight, withoutsidebar
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage[default]{raleway}
+\usepackage[margin=1cm, a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage{fontawesome}
+
+% Ścieżka do folderu ze zdjęciami
+\graphicspath{{img/}}
+
+%------------------------------------------------------------------ Zmienne i szerokości
+
+\newlength{\rightcolwidth}
+\newlength{\leftcolwidth}
+\setlength{\leftcolwidth}{0.23\textwidth}
+\setlength{\rightcolwidth}{0.75\textwidth}
+
+%------------------------------------------------------------------
+\title{Doktor - Curriculum Vitae}
+\author{Doktor}
+\date{2026}
+
+\pagestyle{empty}
+\begin{document}
+
+\thispagestyle{empty}
+%-------------------------------------------------------------
+
+\section*{Start}
+
+\simpleheader{headercolour}{Doktor}{(The Doctor)}{Prezydent Świata}{white}
+
+%------------------------------------------------
+
+% Sekcja wymagana do poprawnego startu kolumn paracol
+\subsection*{}
+\vspace{4em}
+
+\setlength{\columnsep}{1.5cm}
+\columnratio{0.23}[0.75]
+\begin{paracol}{2}
+\hbadness5000
+
+\paracolbackgroundoptions
+
+\footnotesize
+{\setasidefontcolour
+\flushright
+\begin{center}
+    \roundpic{doctor.jpg}
+\end{center}
+
+\bg{cvgreen}{white}{O mnie}\\[0.5em]
+
+{\footnotesize
+Starożytny Władca Czasu z ponad dwoma tysiącleciami doświadczenia w obronie planetarnej, naukach temporalnych i dyplomacji kosmicznej. Ponad 1200-krotny obrońca Ziemi. Pacyfista rozwiązujący konflikty intelektem i mową zamiast broni.}
+\bigskip
+
+\bg{cvgreen}{white}{Dane osobowe} \\[0.5em]
+Doktor
+
+Gatunek: Władca Czasu 
+
+Pochodzenie: Gallifrey
+
+Wiek: $\sim$2000 lat
+
+\bigskip
+
+\bg{cvgreen}{white}{Specjalizacja} \\[0.5em]
+
+Fizyka Temporalna ~•~ Ksenobiologia ~•~ Dyplomacja Kosmiczna ~•~ Obrona Planetarna
+
+\bigskip
+
+\bg{cvgreen}{white}{Zainteresowania}\\[0.5em]
+
+Fezy ~/~ Muszki ~/~ Paluszki rybne z budyniem ~/~ Gitara elektryczna
+
+\bigskip
+
+\bg{cvgreen}{white}{Kluczowe narzędzia}\\[0.5em]
+
+\texttt{Śrubokręt Soniczny}
+
+\texttt{Papier Psychiczny} 
+
+\texttt{TARDIS}
+
+\vspace{4em}
+
+\infobubble{\faAt}{cvgreen}{white}{unit@earth-def.gov}
+\infobubble{\faGlobe}{cvgreen}{white}{Gallifrey / Ziemia}
+\infobubble{\faPhone}{cvgreen}{white}{Kanał 49 (UNIT)}
+\infobubble{\faGithub}{cvgreen}{white}{tardis-core}
+
+\phantom{turn the page}
+
+\phantom{turn the page}
+}
+%-----------------------------------------------------------
+\switchcolumn
+
+\small
+\section*{Krótkie CV}
+
+\begin{tabular}{r| p{0.5\textwidth} c}
+    \cvevent{2014--obecnie}{Prezydent Świata}{Dowódca Awaryjny}{Ziemia / UNIT \color{cvred}}{Powołany na mocy Protokołu 49 UNIT. Wynegocjował Traktat Pokojowy Zygoni-Ludzie. Powstrzymał globalne inwazje Cybermenów oraz Daleków.}{unit.png} \\
+    \cvevent{1963--obecnie}{Główny Doradca Naukowy}{Konsultant}{UNIT / Ziemia \color{cvred}}{Główny konsultant agencji UNIT. Chronił Ziemię przed obcymi zagrożeniami, konstruując aparaturę badawczą z przedmiotów codziennego użytku.}{earth.png}
+\end{tabular}
+\vspace{2.5em}
+
+\begin{minipage}[t]{0.35\textwidth}
+\section*{Wykształcenie}
+\begin{tabular}{r p{0.55\textwidth} c}
+    \cvdegree{Gallifrey}{Dyplom Władcy Czasu}{Prydonian}{Akademia \color{headerblue}}{Pilotaż TARDIS.}{gallifrey.png} \\
+    \cvdegree{Ziemia}{Doktoraty (Hon.)}{Wszystkie pola}{Oxford / Cam. \color{headerblue}}{Fizyka, medycyna, historia.}{degree.png}
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}
+\section*{Umiejętności}
+\begin{tabular}{r @{\hspace{0.4em}}l}
+     \bg{skilllabelcolour}{iconcolour}{Dyplomacja} &  \barrule{0.55}{0.5em}{cvpurple}\\
+     \bg{skilllabelcolour}{iconcolour}{Fizyka Temp.} & \barrule{0.55}{0.5em}{cvgreen} \\
+     \bg{skilllabelcolour}{iconcolour}{Ksenobiologia} & \barrule{0.5}{0.5em}{cvpurple} \\
+     \bg{skilllabelcolour}{iconcolour}{TARDIS} & \barrule{0.4}{0.5em}{cvpurple} \\
+     \bg{skilllabelcolour}{iconcolour}{Ucieczka} & \barrule{0.55}{0.5em}{cvpurple} \\
+\end{tabular}
+\end{minipage}
+
+\vspace{1em}
+
+\section*{Doświadczenie Zawodowe}
+\begin{tabular}{r| p{0.5\textwidth} c}
+    \cvevent{Wielokrotnie}{Lord Prezydent}{Głowa Państwa}{Gallifrey \color{cvred}}{Najwyższy urzędnik Władców Czasu. Zakończył Wojnę Czasu, ratując Gallifrey w wymiarze kieszonkowym. Obalił tyrana Rasilona bez oddania jednego strzału.}{gallifrey.png} \\
+    \cvevent{2015--2017}{Wykładowca Akademicki}{Fizyka / Filozofia}{St Luke's Bristol \color{cvred}}{Prowadził wykłady z mechaniki kwantowej; strzegł tajnej Krypty z uwięzionym niebezpiecznym Władcą Czasu.}{earth.png} \\
+\end{tabular}
+\vspace{2.5em}
+
+\begin{minipage}[t]{0.34\textwidth}
+\section*{Sprzęt i Cechy}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.55\textwidth}}
+    Biologia & Dwa serca, Regeneracja \\
+    Narzędzie & Śrubokręt Soniczny \\
+    Dowód & Papier Psychiczny
+\end{tabular}
+\bigskip
+
+\section*{Języki}
+\begin{tabular}{l | ll}
+\textbf{Wszystkie} & C2 & {\phantom{x}\footnotesize Tłumacz TARDIS} \\
+\textbf{Angielski} & C2 & \pictofraction{\faCircle}{cvgreen}{4}{black!30}{0}{\tiny} \\
+\textbf{Judoon} & C2 & \pictofraction{\faCircle}{cvgreen}{4}{black!30}{0}{\tiny} \\
+\textbf{Mowa dzieci} & C2 & \pictofraction{\faCircle}{cvgreen}{4}{black!30}{0}{\tiny}
+\end{tabular}
+\bigskip
+
+\end{minipage}\hfill
+\begin{minipage}[t]{0.35\textwidth}
+\section*{Przemówienia}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.68\textwidth}}
+    2015 & \emph{Zygon Inversion} (Rozbrojenie wojny mową). \\
+    2013 & \emph{Pierścienie Akhaten} (Przemowa do Boga-pasożyta).
+\end{tabular}
+\bigskip
+
+\section*{Osiągnięcia}
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.65\textwidth}}
+    Wojna Czasu & Ocalenie Gallifrey i Ziemi. \\
+    Flux & Ocalenie wszechświata przed powodzią Fluxu.
+\end{tabular}
+\end{minipage}
+
+\vfill{}
+
+%----------------------------------------------------------------------------------------
+%    STOPKA
+%----------------------------------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\begin{minipage}[t]{0.95\rightcolwidth}
+\begin{center}\fontfamily{\sfdefault}\selectfont \color{black!70}
+{\small Doktor \icon{\faEnvelopeO}{cvgreen}{} TARDIS (Typ 40) \icon{\faMapMarker}{cvgreen}{} Czasoprzestrzeń \icon{\faPhone}{cvgreen}{} Linia UNIT 49 \newline\icon{\faAt}{cvgreen}{} \protect\url{unit@earth-def.gov}
+}
+\end{center}
+\end{minipage}
+
+\end{paracol}
+
+\end{document}
