@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Filar fizyczny: Mechanika kwantowa}{3}{0}{1}
+\beamer@sectionintoc {2}{Filar matematyczny: Formalizm przestrzeni Hilberta}{4}{0}{2}
+\beamer@sectionintoc {3}{Filar algorytmiczny: Algorytm Grovera}{6}{0}{3}
+\beamer@sectionintoc {4}{Złożoność i podsumowanie}{9}{0}{4}

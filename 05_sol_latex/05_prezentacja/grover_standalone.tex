@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, angles, quotes, calc, positioning}
+
+\usepackage[papersize={15.5cm,10.8cm}, margin=0.3cm]{geometry}
+\pagestyle{empty}
+
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+
+\begin{document}
+\centering
+\vspace*{\fill}
+\begin{tikzpicture}[
+    scale=1.1,
+    >=Stealth,
+    font=\sffamily,
+    axis/.style={thick, ->, color=gray!75!black},
+    vector/.style={very thick, ->},
+    guide/.style={dashed, thin, color=gray!60},
+    anglelabel/.style={font=\sffamily\footnotesize}
+]
+    % Coordinates
+    \coordinate (O) at (0,0);
+    \coordinate (X) at (6.8,0);
+    \coordinate (Y) at (0,5.2);
+
+    % Background soft grid
+    \draw[step=1cm, gray!15, very thin] (-0.8,-1.7) grid (7.0,5.4);
+
+    % Axes
+    \draw[axis, line width=1.1pt] (-0.6,0) -- (X) 
+        node[below=3pt, color=blue!85!black] {\large \textbf{$|\omega^\perp\rangle$} \footnotesize(stany nieposzukiwane)};
+    \draw[axis, line width=1.1pt] (0,-1.7) -- (Y) 
+        node[left=3pt, color=red!85!black] {\large \textbf{$|\omega\rangle$} \footnotesize(stan szukany)};
+
+    % Angle parameters
+    \def\thetaHalf{17}
+    \def\radius{5.0}
+
+    % Vector coordinates
+    \coordinate (S) at ({\thetaHalf}:\radius);
+    \coordinate (Refl) at ({-\thetaHalf}:\radius);
+    \coordinate (G) at ({3*\thetaHalf}:\radius);
+
+    % Guideline - reflection axis along |s>
+    \draw[dashed, teal!70!black, line width=1pt] (O) -- ({\thetaHalf}:{\radius*1.18}) 
+        node[above right=-1pt, font=\footnotesize\bfseries, color=teal!70!black] {Oś odbicia dyfuzora};
+
+    % Guideline - vertical reflection between Refl and S
+    \draw[dotted, purple!60, line width=1pt] (S) -- (Refl);
+
+    % 1. Initial State |s>
+    \draw[vector, blue!85!black, line width=2pt] (O) -- (S) 
+        node[right=3pt] {\Large $\mathbf{|s\rangle}$ \footnotesize\textbf{(stan początkowy)}};
+
+    % 2. Reflected State U_\omega |s>
+    \draw[vector, purple!80!black, dashed, line width=1.6pt] (O) -- (Refl) 
+        node[right=3pt] {\large $\mathbf{U_\omega |s\rangle}$ \footnotesize(odbicie przez wyrocznię)};
+
+    % 3. State after Grover iteration G |s>
+    \draw[vector, red!85!black, line width=2.4pt] (O) -- (G) 
+        node[above right=-2pt] {\Large $\mathbf{G|s\rangle}$ \footnotesize\textbf{(po 1. iteracji)}};
+
+    % Angles and arcs
+    % theta/2 below axis
+    \draw[<->, purple!80!black, line width=0.9pt] (2.0,0) arc (0:-\thetaHalf:2.0);
+    \node[purple!90!black, font=\bfseries\small] at ({-\thetaHalf/2}:2.5) {$\theta/2$};
+
+    % theta/2 above axis
+    \draw[<->, blue!80!black, line width=0.9pt] (2.0,0) arc (0:\thetaHalf:2.0);
+    \node[blue!90!black, font=\bfseries\small] at ({\thetaHalf/2}:2.5) {$\theta/2$};
+
+    % theta rotation arc from |s> to G|s>
+    \draw[->, red!85!black, line width=1.5pt] ({\thetaHalf}:3.3) arc ({\thetaHalf}:{3*\thetaHalf}:3.3);
+    \node[red!85!black, font=\sffamily\bfseries\normalsize] at ({2*\thetaHalf}:3.9) {obrót o $\theta$};
+
+    % Explanatory legend box
+    \node[draw=gray!35, fill=white, rounded corners=4pt, inner sep=6pt, font=\sffamily\scriptsize, align=left, anchor=south east] 
+        at (6.8, 3.1) {
+        \textbf{\small Geometryczny mechanizm iteracji:}\\[3pt]
+        \textcolor{purple!80!black}{$\mathbf{1.\; U_\omega}$:} odbicie wzgl. $|\omega^\perp\rangle$ (zmiana znaku $\ket{\omega}$)\\[2pt]
+        \textcolor{teal!70!black}{$\mathbf{2.\; D}$:} odbicie wzgl. $|s\rangle$ (inwersja wokół średniej)\\[3pt]
+        \textcolor{red!85!black}{$\mathbf{\Rightarrow}$ Wynik:} \textbf{obrót o stały kąt $\theta \approx \frac{2}{\sqrt{N}}$} w stronę $|\omega\rangle$
+    };
+
+\end{tikzpicture}
+\vspace*{\fill}
+\end{document}
