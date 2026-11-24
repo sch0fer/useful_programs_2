@@ -1,0 +1,170 @@
+\documentclass[11pt,a4paper]{article}
+
+% ==============================================================================
+% PAKIETY JĘZYKOWE, KODOWANIE I TYPOGRAFIA
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage{lmodern}
+
+% Poprawa czytelności i eliminacja pojedynczych wiszących linii (wdów i sierot)
+\usepackage{microtype}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% ==============================================================================
+% PAKIETY MATEMATYCZNE
+% ==============================================================================
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{mathtools}
+
+% ==============================================================================
+% UKŁAD STRONY I ODSTĘPY
+% ==============================================================================
+\usepackage[margin=2.3cm, top=2.5cm, bottom=2.5cm, headheight=14.5pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Ustawienia list wyliczeniowych
+\setlist{itemsep=3pt, topsep=4pt, parsep=1pt}
+
+% ==============================================================================
+% PALETA KOLORÓW I BLOKI TCOLORBOX
+% ==============================================================================
+\definecolor{navyblue}{HTML}{1A365D}     % Główny akcent, nagłówki
+\definecolor{forestgreen}{HTML}{1E6B52}  % Kolor sekcji teorii
+\definecolor{charcoal}{HTML}{2D3748}     % Kolor podsumowań
+\definecolor{lightbg}{HTML}{F7FAFC}      % Jasne tło treści zadania
+\definecolor{teoriabg}{HTML}{F2F8F5}     % Jasne tło teorii
+\definecolor{darkslate}{HTML}{4A5568}    % Tekst poboczny
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Konfiguracja boksów z nowoczesnym paskiem bocznym (Bourbaki / AMS style)
+\newtcolorbox{tresczadania}[1][]{
+    enhanced,
+    breakable,
+    colback=lightbg,
+    colframe=navyblue,
+    borderline west={3.5pt}{0pt}{navyblue},
+    boxrule=0pt,
+    arc=0mm,
+    top=7pt, bottom=7pt, left=10pt, right=10pt,
+    fonttitle=\bfseries\color{navyblue},
+    title={Treść zadania},
+    attach title to upper={\par\vspace{5pt}},
+    #1
+}
+
+\newtcolorbox{teoriabox}[1][Wymagana teoria i najważniejsze wzory]{
+    enhanced,
+    breakable,
+    colback=teoriabg,
+    colframe=forestgreen,
+    borderline west={3.5pt}{0pt}{forestgreen},
+    boxrule=0pt,
+    arc=0mm,
+    top=7pt, bottom=7pt, left=10pt, right=10pt,
+    fonttitle=\bfseries\color{forestgreen},
+    title={#1},
+    attach title to upper={\par\vspace{5pt}}
+}
+
+\newtcolorbox{odpowiedzbox}[1][Podsumowanie i wynik]{
+    enhanced,
+    breakable,
+    colback=gray!6!white,
+    colframe=charcoal,
+    borderline west={3.5pt}{0pt}{charcoal},
+    boxrule=0pt,
+    arc=0mm,
+    top=7pt, bottom=7pt, left=10pt, right=10pt,
+    fonttitle=\bfseries\color{charcoal},
+    title={#1},
+    attach title to upper={\par\vspace{5pt}}
+}
+
+% ==============================================================================
+% KONFIGURACJA NAGŁÓWKÓW I STOPEK
+% ==============================================================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{darkslate}{\textsc{Matematyka 1} \textbullet\ Lista 6: Szeregi liczbowe}}
+\fancyhead[R]{\small\textcolor{darkslate}{\textsc{Rozwiązania zadań}}}
+\fancyfoot[C]{\small\textcolor{darkslate}{Strona \thepage\ z \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% ==============================================================================
+% HIPERŁĄCZA (HYPERREF)
+% ==============================================================================
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navyblue,
+    urlcolor=navyblue,
+    citecolor=forestgreen,
+    pdftitle={Matematyka 1 - Lista 6: Szeregi liczbowe (Rozwiązania)},
+    pdfauthor={Rozwiązania zadań},
+    pdfsubject={Szeregi liczbowe, kryteria zbieżności, dwumian Newtona}
+}
+
+% ==============================================================================
+% POCZĄTEK DOKUMENTU
+% ==============================================================================
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% NAGŁÓWEK DOKUMENTU (ACADEMIC HEADER BANNER)
+% ------------------------------------------------------------------------------
+\begin{center}
+    {\scshape\Large Adam Gwiazdoń}\\[0.2cm]
+    {\scshape\large Kurs: Matematyka 1 --- Semestr Zimowy}\\[0.4cm]
+    \rule{\textwidth}{1.2pt}\\[0.35cm]
+    {\huge\bfseries\color{navyblue} Rozwiązania zadań: Lista 6}\\[0.2cm]
+    {\large\bfseries Tematyka: Dwumian Newtona oraz kryteria zbieżności szeregów liczbowych}\\[0.3cm]
+    \rule{\textwidth}{0.8pt}\\[0.3cm]
+    {\small \textbf{Opracowanie:} Praca domowa \quad\textbullet\quad \textbf{Data:} \today}
+\end{center}
+
+\vspace{0.4cm}
+
+\begin{abstract}
+\noindent Niniejszy dokument zawiera kompletne, formalne i szczegółowe rozwiązania wszystkich zadań z \textbf{Listy 6} z przedmiotu \emph{Matematyka 1}. Każde zadanie rozpoczyna się od przytoczenia pełnej treści, po czym następuje zestawienie niezbędnego aparatu pojęciowego, definicji, twierdzeń oraz kryteriów analitycznych. W dalszej części przedstawiono wyczerpujące kroki analityczne i algebraiczne wraz z uzasadnieniem każdego przejścia, a całość zwieńczona jest jednoznacznym podsumowaniem.
+\end{abstract}
+
+\vspace{0.3cm}
+{
+\hypersetup{linkcolor=charcoal}
+\tableofcontents
+}
+\vspace{0.5cm}
+
+% ------------------------------------------------------------------------------
+% DOŁĄCZANIE POSZCZEGÓLNYCH ZADAŃ
+% ------------------------------------------------------------------------------
+
+\clearpage
+\input{zadanie1.tex}
+
+\clearpage
+\input{zadanie2.tex}
+
+\clearpage
+\input{zadanie3.tex}
+
+\clearpage
+\input{zadanie4.tex}
+
+\clearpage
+\input{zadanie5.tex}
+
+\end{document}

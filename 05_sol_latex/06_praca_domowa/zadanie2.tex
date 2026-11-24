@@ -1,0 +1,155 @@
+\section{Zadanie 2: Badanie rozbieżności szeregów z Listy 5}
+\label{sec:zadanie2}
+
+\begin{tresczadania}
+Które z szeregów $\sum a_n$ dla ciągów $a_n$ z ćwiczenia 2 listy 5 są rozbieżne?
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+    \item $\displaystyle a_n = 1 + \frac{1}{n} + \frac{1}{n^2}$
+    \item $\displaystyle a_n = \frac{n^2+2}{n^3-5n+1}$
+    \item $\displaystyle a_n = \frac{|\cos(\pi n)|}{n}$
+    \item $\displaystyle a_n = \sqrt{n^2+n} - n$
+    \item $\displaystyle a_n = \frac{(n+1)! - n! + (n-1)!}{(n+1)! + n!}$
+\end{enumerate}
+\end{tresczadania}
+
+\vspace{0.2cm}
+
+\begin{teoriabox}
+\begin{enumerate}
+    \item \textbf{Warunek konieczny zbieżności szeregu:}
+    Jeżeli szereg liczbowy $\sum_{n=1}^{\infty} a_n$ jest zbieżny, to granica jego wyrazu ogólnego wynosi zero:
+    \begin{equation}
+        \sum_{n=1}^{\infty} a_n < \infty \implies \lim_{n \to \infty} a_n = 0.
+        \label{eq:wk_zbieznosci}
+    \end{equation}
+
+    \item \textbf{Kryterium rozbieżności (z prawa kontrapozycji):}
+    Jeżeli wyraz ogólny szeregu nie zbiega do zera lub granica nie istnieje:
+    \begin{equation}
+        \lim_{n \to \infty} a_n \neq 0 \quad \lor \quad \lim_{n \to \infty} a_n \text{ nie istnieje} \implies \sum_{n=1}^{\infty} a_n \text{ jest \textbf{rozbieżny}}.
+        \label{eq:kryt_rozbieznosci}
+    \end{equation}
+
+    \item \textbf{Kryterium ilorazowe (graniczne kryterium porównawcze):}
+    Gdy $\lim_{n \to \infty} a_n = 0$, warunek konieczny nie rozstrzyga o zbieżności. Jeżeli $a_n > 0$ oraz $b_n > 0$, a ponadto istnieje właściwa i dodatnia granica:
+    \begin{equation}
+        k = \lim_{n \to \infty} \frac{a_n}{b_n} \in (0, \infty),
+        \label{eq:kryt_ilorazowe}
+    \end{equation}
+    to szeregi $\sum a_n$ oraz $\sum b_n$ mają ten sam charakter zbieżności. W szczególności, gdy $b_n = \frac{1}{n}$ (szereg harmoniczny, rozbieżny), to szereg $\sum a_n$ jest również rozbieżny.
+\end{enumerate}
+\end{teoriabox}
+
+\vspace{0.2cm}
+
+\subsection*{Rozwiązania szczegółowe poszczególnych podpunktów}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (a): $\displaystyle a_n = 1 + \frac{1}{n} + \frac{1}{n^2}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Badanie granicy wyrazu ogólnego.}
+    Obliczamy granicę ciągu przy $n \to \infty$:
+    \begin{equation*}
+        \lim_{n \to \infty} a_n = \lim_{n \to \infty} \left(1 + \frac{1}{n} + \frac{1}{n^2}\right) = 1 + 0 + 0 = 1.
+    \end{equation*}
+    \item \textbf{Ocena warunku koniecznego i wniosek.}
+    Ponieważ $\lim_{n \to \infty} a_n = 1 \neq 0$, warunek konieczny zbieżności nie jest spełniony. Zatem szereg $\displaystyle\sum_{n=1}^{\infty} \left(1 + \frac{1}{n} + \frac{1}{n^2}\right)$ jest \textbf{rozbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (b): $\displaystyle a_n = \frac{n^2+2}{n^3-5n+1}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Badanie granicy wyrazu ogólnego.}
+    Dzieląc licznik i mianownik przez $n^3$, otrzymujemy:
+    \begin{equation*}
+        \lim_{n \to \infty} a_n = \lim_{n \to \infty} \frac{\frac{1}{n} + \frac{2}{n^3}}{1 - \frac{5}{n^2} + \frac{1}{n^3}} = \frac{0}{1} = 0.
+    \end{equation*}
+    Warunek konieczny jest spełniony, co wymaga dalszego badania rzędu zbieżności.
+    \item \textbf{Zastosowanie kryterium ilorazowego.}
+    Dla dużych $n$ wyrazy są dodatnie, a asymptotycznie $a_n \sim \frac{n^2}{n^3} = \frac{1}{n}$. Przyjmijmy rozbieżny szereg harmoniczny $b_n = \frac{1}{n}$:
+    \begin{align*}
+        k &= \lim_{n \to \infty} \frac{a_n}{b_n} = \lim_{n \to \infty} \frac{\frac{n^2+2}{n^3-5n+1}}{\frac{1}{n}} = \lim_{n \to \infty} \frac{n(n^2+2)}{n^3-5n+1} \\
+        &= \lim_{n \to \infty} \frac{n^3+2n}{n^3-5n+1} = \lim_{n \to \infty} \frac{1 + \frac{2}{n^2}}{1 - \frac{5}{n^2} + \frac{1}{n^3}} = 1.
+    \end{align*}
+    \item \textbf{Wniosek.}
+    Ponieważ $k = 1 \in (0, \infty)$, a szereg harmoniczny $\sum \frac{1}{n}$ jest rozbieżny, badany szereg $\displaystyle\sum_{n=1}^{\infty} \frac{n^2+2}{n^3-5n+1}$ jest również \textbf{rozbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (c): $\displaystyle a_n = \frac{|\cos(\pi n)|}{n}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Uproszczenie licznika.}
+    Dla każdego $n \in \mathbb{N}$ mamy tożsamość $\cos(\pi n) = (-1)^n$, skąd:
+    \begin{equation*}
+        |\cos(\pi n)| = |(-1)^n| = 1.
+    \end{equation*}
+    \item \textbf{Postać wyrazu ogólnego i wniosek.}
+    Ciąg upraszcza się do postaci $a_n = \frac{1}{n}$. Odpowiadający mu szereg to klasyczny szereg harmoniczny:
+    \begin{equation*}
+        \sum_{n=1}^{\infty} a_n = \sum_{n=1}^{\infty} \frac{1}{n}.
+    \end{equation*}
+    Szereg harmoniczny jest powszechnie znanym szeregiem rozbieżnym do $+\infty$. Zatem badany szereg jest \textbf{rozbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (d): $\displaystyle a_n = \sqrt{n^2+n} - n$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Mnożenie przez sprzężenie.}
+    Likwidujemy symbol nieoznaczony $[\infty - \infty]$:
+    \begin{align*}
+        a_n &= \frac{(\sqrt{n^2+n} - n)(\sqrt{n^2+n} + n)}{\sqrt{n^2+n} + n} = \frac{(n^2+n) - n^2}{\sqrt{n^2(1 + \frac{1}{n})} + n} \\
+        &= \frac{n}{n\sqrt{1 + \frac{1}{n}} + n} = \frac{1}{\sqrt{1 + \frac{1}{n}} + 1}.
+    \end{align*}
+    \item \textbf{Badanie granicy wyrazu ogólnego.}
+    \begin{equation*}
+        \lim_{n \to \infty} a_n = \lim_{n \to \infty} \frac{1}{\sqrt{1 + \frac{1}{n}} + 1} = \frac{1}{\sqrt{1+0} + 1} = \frac{1}{2}.
+    \end{equation*}
+    \item \textbf{Ocena i wniosek.}
+    Ponieważ $\lim_{n \to \infty} a_n = \frac{1}{2} \neq 0$, szereg nie spełnia warunku koniecznego zbieżności. Stąd szereg $\displaystyle\sum_{n=1}^{\infty} \left(\sqrt{n^2+n} - n\right)$ jest \textbf{rozbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (e): $\displaystyle a_n = \frac{(n+1)! - n! + (n-1)!}{(n+1)! + n!}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Uproszczenie ułamka z silniami.}
+    Dzielimy licznik i mianownik przez $n!$, pamiętając, że $(n+1)! = (n+1)n!$ oraz $(n-1)! = \frac{n!}{n}$:
+    \begin{equation*}
+        a_n = \frac{(n+1) - 1 + \frac{1}{n}}{(n+1) + 1} = \frac{n + \frac{1}{n}}{n + 2} = \frac{n^2 + 1}{n^2 + 2n}.
+    \end{equation*}
+    \item \textbf{Badanie granicy wyrazu ogólnego.}
+    \begin{equation*}
+        \lim_{n \to \infty} a_n = \lim_{n \to \infty} \frac{1 + \frac{1}{n^2}}{1 + \frac{2}{n}} = \frac{1+0}{1+0} = 1.
+    \end{equation*}
+    \item \textbf{Ocena i wniosek.}
+    Ponieważ $\lim_{n \to \infty} a_n = 1 \neq 0$, warunek konieczny nie jest spełniony. Zatem szereg $\displaystyle\sum_{n=1}^{\infty} \frac{(n+1)! - n! + (n-1)!}{(n+1)! + n!}$ jest \textbf{rozbieżny}.
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{odpowiedzbox}[Podsumowanie i odpowiedź do Zadania 2]
+\begin{center}
+\small
+\resizebox{0.96\linewidth}{!}{%
+\begin{tabular}{c l c c l}
+\toprule
+\textbf{Podpunkt} & \textbf{Ciąg $a_n$} & $\mathbf{\lim a_n}$ & \textbf{Warunek konieczny} & \textbf{Werdykt i uzasadnienie} \\
+\midrule
+(a) & $1 + \frac{1}{n} + \frac{1}{n^2}$ & $1$ & Nie spełniony & \textbf{Rozbieżny} ($\lim a_n = 1 \neq 0$) \\
+(b) & $\frac{n^2+2}{n^3-5n+1}$ & $0$ & Spełniony & \textbf{Rozbieżny} (ilorazowe z $\sum \frac{1}{n}$) \\
+(c) & $\frac{|\cos(\pi n)|}{n} = \frac{1}{n}$ & $0$ & Spełniony & \textbf{Rozbieżny} (szereg harmoniczny) \\
+(d) & $\sqrt{n^2+n} - n$ & $\frac{1}{2}$ & Nie spełniony & \textbf{Rozbieżny} ($\lim a_n = \frac{1}{2} \neq 0$) \\
+(e) & $\frac{(n+1)! - n! + (n-1)!}{(n+1)! + n!}$ & $1$ & Nie spełniony & \textbf{Rozbieżny} ($\lim a_n = 1 \neq 0$) \\
+\bottomrule
+\end{tabular}%
+}
+\end{center}
+
+\vspace{0.2cm}
+\noindent\textbf{Ostateczna konkluzja:}\\
+\textbf{Wszystkie} badane szeregi (a), (b), (c), (d) oraz (e) są \textbf{rozbieżne}. Szeregi (a), (d) i (e) rozbiegają się wskutek niespełnienia warunku koniecznego zbieżności, natomiast szeregi (b) i (c) rozbiegają się ze względu na zbyt powolny zanik wyrazu ogólnego (rząd harmoniczny $\sim \frac{1}{n}$).
+\end{odpowiedzbox}

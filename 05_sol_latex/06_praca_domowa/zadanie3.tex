@@ -1,0 +1,179 @@
+\section{Zadanie 3: Badanie zbieżności szeregów za pomocą kryteriów}
+\label{sec:zadanie3}
+
+\begin{tresczadania}
+Zbadaj zbieżność następujących szeregów (korzystając z kryteriów zbieżności):
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+    \item $\displaystyle \sum_{n=1}^{\infty} \frac{2^n}{n!}$
+    \item $\displaystyle \sum_{n=1}^{\infty} \frac{3^n}{n^2}$
+    \item $\displaystyle 1 + \sum_{n=2}^{\infty} \frac{1}{n-1}$
+    \item $\displaystyle \sum_{n=1}^{\infty} \left(\frac{\pi}{2e}\right)^n$
+    \item $\displaystyle \sum_{n=1}^{\infty} \frac{7^{n+2}}{5^n}$
+    \item $\displaystyle \sum_{n=1}^{\infty} \left(\frac{1}{2^n} - \frac{1}{2^{n+1}}\right)$
+\end{enumerate}
+\end{tresczadania}
+
+\vspace{0.2cm}
+
+\begin{teoriabox}
+\begin{enumerate}
+    \item \textbf{Kryterium d'Alemberta (ilorazowe):}
+    Dla szeregu o wyrazach dodatnich ($a_n > 0$), jeżeli istnieje granica:
+    \begin{equation}
+        g = \lim_{n \to \infty} \frac{a_{n+1}}{a_n},
+        \label{eq:dalembert_crit}
+    \end{equation}
+    to:
+    \begin{itemize}
+        \item gdy $g < 1$, szereg jest \textbf{zbieżny},
+        \item gdy $g > 1$, szereg jest \textbf{rozbieżny},
+        \item gdy $g = 1$, kryterium nie rozstrzyga o zbieżności.
+    \end{itemize}
+
+    \item \textbf{Kryterium Cauchy'ego (pierwiastkowe):}
+    Dla szeregu o wyrazach nieujemnych ($a_n \geqslant 0$), jeżeli istnieje granica:
+    \begin{equation}
+        g = \lim_{n \to \infty} \sqrt[n]{a_n},
+        \label{eq:cauchy_crit}
+    \end{equation}
+    to gdy $g < 1$ szereg jest \textbf{zbieżny}, gdy $g > 1$ jest \textbf{rozbieżny}, a gdy $g = 1$ kryterium nie rozstrzyga.
+
+    \item \textbf{Zbieżność szeregu geometrycznego:}
+    Szereg $\sum_{n=1}^{\infty} c \cdot q^n$ ($c \neq 0$) jest \textbf{zbieżny} $\iff |q| < 1$. Wtedy jego suma wynosi $S = \frac{a_1}{1 - q}$. Dla $|q| \geqslant 1$ szereg jest \textbf{rozbieżny}.
+
+    \item \textbf{Szereg harmoniczny rzędu $\alpha$:}
+    Szereg $\sum_{n=1}^{\infty} \frac{1}{n^\alpha}$ jest zbieżny $\iff \alpha > 1$. Dla $\alpha \leqslant 1$ szereg jest rozbieżny.
+
+    \item \textbf{Niezmienniczość zbieżności ze względu na początkowe wyrazy:}
+    Modyfikacja skończonej liczby wyrazów (np. dodanie stałej na początku) nie wpływa na fakt zbieżności bądź rozbieżności szeregu.
+\end{enumerate}
+\end{teoriabox}
+
+\vspace{0.2cm}
+
+\subsection*{Rozwiązania szczegółowe poszczególnych podpunktów}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (a): $\displaystyle \sum_{n=1}^{\infty} \frac{2^n}{n!}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Wybór metody.}
+    Mamy $a_n = \frac{2^n}{n!} > 0$. Obecność silni w mianowniku wskazuje na celowość zastosowania \textbf{kryterium d'Alemberta}.
+    \item \textbf{Obliczenie ilorazu $\frac{a_{n+1}}{a_n}$.}
+    \begin{equation*}
+        \frac{a_{n+1}}{a_n} = \frac{2^{n+1}}{(n+1)!} \cdot \frac{n!}{2^n} = \frac{2 \cdot 2^n \cdot n!}{(n+1)n! \cdot 2^n} = \frac{2}{n+1}.
+    \end{equation*}
+    \item \textbf{Granica ilorazu i wniosek.}
+    \begin{equation*}
+        g = \lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \frac{2}{n+1} = 0.
+    \end{equation*}
+    Ponieważ $g = 0 < 1$, na mocy kryterium d'Alemberta szereg $\displaystyle\sum_{n=1}^{\infty} \frac{2^n}{n!}$ jest \textbf{zbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (b): $\displaystyle \sum_{n=1}^{\infty} \frac{3^n}{n^2}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Zastosowanie kryterium d'Alemberta.}
+    Dla $a_n = \frac{3^n}{n^2} > 0$ wyznaczamy iloraz kolejnych wyrazów:
+    \begin{equation*}
+        \frac{a_{n+1}}{a_n} = \frac{3^{n+1}}{(n+1)^2} \cdot \frac{n^2}{3^n} = 3 \cdot \left(\frac{n}{n+1}\right)^2 = 3 \cdot \left(\frac{1}{1 + \frac{1}{n}}\right)^2.
+    \end{equation*}
+    \item \textbf{Granica ilorazu i wniosek.}
+    \begin{equation*}
+        g = \lim_{n \to \infty} \frac{a_{n+1}}{a_n} = 3 \cdot 1^2 = 3.
+    \end{equation*}
+    Ponieważ $g = 3 > 1$, na mocy kryterium d'Alemberta szereg $\displaystyle\sum_{n=1}^{\infty} \frac{3^n}{n^2}$ jest \textbf{rozbieżny} (co potwierdza również warunek konieczny: $\lim a_n = +\infty \neq 0$).
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (c): $\displaystyle 1 + \sum_{n=2}^{\infty} \frac{1}{n-1}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Przesunięcie wskaźnika sumowania.}
+    Wprowadzamy nową zmienną sumowania $k = n - 1$. Dla $n = 2$ mamy $k = 1$, zatem:
+    \begin{equation*}
+        \sum_{n=2}^{\infty} \frac{1}{n-1} = \sum_{k=1}^{\infty} \frac{1}{k}.
+    \end{equation*}
+    \item \textbf{Rozpoznanie szeregu i wniosek.}
+    Jest to klasyczny szereg harmoniczny rzędu $\alpha = 1$, o którym wiadomo, że jest rozbieżny do $+\infty$. Dodanie stałej $1$ nie wpływa na zbieżność:
+    \begin{equation*}
+        1 + \sum_{n=2}^{\infty} \frac{1}{n-1} = 1 + \infty = \infty.
+    \end{equation*}
+    Badany szereg jest \textbf{rozbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (d): $\displaystyle \sum_{n=1}^{\infty} \left(\frac{\pi}{2e}\right)^n$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Identyfikacja ilorazu szeregu geometrycznego.}
+    Mamy szereg geometryczny o ilorazie $q = \frac{\pi}{2e}$.
+    \item \textbf{Oszacowanie wartości $q$.}
+    Przyjmując znane przybliżenia $\pi \approx 3{,}14159$ oraz $e \approx 2{,}71828 \implies 2e \approx 5{,}43656$, widzimy, że $\pi < 2e$, skąd:
+    \begin{equation*}
+        0 < q = \frac{\pi}{2e} \approx 0{,}5779 < 1.
+    \end{equation*}
+    \item \textbf{Wniosek.}
+    Ponieważ $|q| < 1$, na mocy twierdzenia o zbieżności szeregu geometrycznego (lub kryterium Cauchy'ego: $\lim \sqrt[n]{a_n} = \frac{\pi}{2e} < 1$), szereg $\displaystyle\sum_{n=1}^{\infty} \left(\frac{\pi}{2e}\right)^n$ jest \textbf{zbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (e): $\displaystyle \sum_{n=1}^{\infty} \frac{7^{n+2}}{5^n}$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Przekształcenie algebraiczne.}
+    \begin{equation*}
+        a_n = \frac{7^{n+2}}{5^n} = \frac{7^2 \cdot 7^n}{5^n} = 49 \cdot \left(\frac{7}{5}\right)^n.
+    \end{equation*}
+    \item \textbf{Zastosowanie kryterium Cauchy'ego.}
+    \begin{equation*}
+        g = \lim_{n \to \infty} \sqrt[n]{a_n} = \lim_{n \to \infty} \sqrt[n]{49} \cdot \frac{7}{5} = 1 \cdot \frac{7}{5} = \frac{7}{5} = 1{,}4.
+    \end{equation*}
+    \item \textbf{Wniosek.}
+    Ponieważ $g = 1{,}4 > 1$, szereg $\displaystyle\sum_{n=1}^{\infty} \frac{7^{n+2}}{5^n}$ jest \textbf{rozbieżny} (ponadto $\lim a_n = +\infty \neq 0$).
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (f): $\displaystyle \sum_{n=1}^{\infty} \left(\frac{1}{2^n} - \frac{1}{2^{n+1}}\right)$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Metoda teleskopowa.}
+    Dla $b_n = \frac{1}{2^n}$ wyraz ogólny ma postać $a_n = b_n - b_{n+1}$. Suma częściowa $S_k$ wynosi:
+    \begin{equation*}
+        S_k = \sum_{n=1}^{k} (b_n - b_{n+1}) = b_1 - b_{k+1} = \frac{1}{2} - \frac{1}{2^{k+1}}.
+    \end{equation*}
+    Przechodząc do granicy przy $k \to \infty$:
+    \begin{equation*}
+        S = \lim_{k \to \infty} S_k = \lim_{k \to \infty} \left(\frac{1}{2} - \frac{1}{2^{k+1}}\right) = \frac{1}{2} - 0 = \frac{1}{2}.
+    \end{equation*}
+    \item \textbf{Metoda geometryczna (równoważna).}
+    Upraszczając ułamek: $a_n = \frac{2 - 1}{2^{n+1}} = \frac{1}{2^{n+1}} = \frac{1}{4} \cdot \left(\frac{1}{2}\right)^{n-1}$. Jest to szereg geometryczny o ilorazie $q = \frac{1}{2} < 1$, którego suma wynosi:
+    \begin{equation*}
+        S = \frac{a_1}{1 - q} = \frac{\frac{1}{4}}{1 - \frac{1}{2}} = \frac{1}{2}.
+    \end{equation*}
+    \item \textbf{Wniosek.}
+    Szereg $\displaystyle\sum_{n=1}^{\infty} \left(\frac{1}{2^n} - \frac{1}{2^{n+1}}\right)$ jest \textbf{zbieżny}, a jego suma wynosi dokładnie $\frac{1}{2}$.
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{odpowiedzbox}[Podsumowanie wyników Zadania 3]
+\begin{center}
+\small
+\resizebox{0.96\linewidth}{!}{%
+\begin{tabular}{c l c l}
+\toprule
+\textbf{Podpunkt} & \textbf{Szereg} & \textbf{Werdykt} & \textbf{Zastosowane kryterium / Uzasadnienie} \\
+\midrule
+(a) & $\sum_{n=1}^{\infty} \frac{2^n}{n!}$ & \textbf{Zbieżny} & Kryterium d'Alemberta ($g = 0 < 1$) \\
+(b) & $\sum_{n=1}^{\infty} \frac{3^n}{n^2}$ & \textbf{Rozbieżny} & Kryterium d'Alemberta ($g = 3 > 1$) \\
+(c) & $1 + \sum_{n=2}^{\infty} \frac{1}{n-1}$ & \textbf{Rozbieżny} & Szereg harmoniczny $\sum \frac{1}{k}$ ($\alpha = 1$) \\
+(d) & $\sum_{n=1}^{\infty} \left(\frac{\pi}{2e}\right)^n$ & \textbf{Zbieżny} & Szereg geometryczny ($|q| \approx 0{,}578 < 1$) \\
+(e) & $\sum_{n=1}^{\infty} \frac{7^{n+2}}{5^n}$ & \textbf{Rozbieżny} & Szereg geometryczny ($q = 1{,}4 > 1$) / Cauchy \\
+(f) & $\sum_{n=1}^{\infty} \left(\frac{1}{2^n} - \frac{1}{2^{n+1}}\right)$ & \textbf{Zbieżny} & Szereg teleskopowy ($S = \frac{1}{2}$) \\
+\bottomrule
+\end{tabular}%
+}
+\end{center}
+\end{odpowiedzbox}

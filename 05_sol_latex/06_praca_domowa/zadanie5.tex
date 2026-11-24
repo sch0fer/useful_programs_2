@@ -1,0 +1,98 @@
+\section{Zadanie 5: Zbieżność szeregu potęgowego dla dowolnego x}
+\label{sec:zadanie5}
+
+\begin{tresczadania}
+Wykaż, że szereg:
+\begin{equation*}
+    \sum_{n=1}^{\infty} \frac{x^n}{n!}
+\end{equation*}
+jest zbieżny dla dowolnego $x \in \mathbb{R}$.
+\end{tresczadania}
+
+\vspace{0.2cm}
+
+\begin{teoriabox}
+\begin{enumerate}
+    \item \textbf{Zbieżność bezwzględna a zbieżność zwykła:}
+    Szereg $\sum_{n=1}^{\infty} a_n$ nazywamy bezwzględnie zbieżnym, jeżeli zbieżny jest szereg modułów:
+    \begin{equation}
+        \sum_{n=1}^{\infty} |a_n| < \infty.
+        \label{eq:abs_conv_def}
+    \end{equation}
+    \textbf{Twierdzenie o zbieżności bezwzględnej:} Każdy szereg bezwzględnie zbieżny jest zbieżny:
+    \begin{equation*}
+        \sum_{n=1}^{\infty} |a_n| < \infty \implies \sum_{n=1}^{\infty} a_n \text{ jest zbieżny}.
+    \end{equation*}
+
+    \item \textbf{Kryterium d'Alemberta (wersja dla zbieżności bezwzględnej):}
+    Dla szeregu o wyrazach niezerowych ($a_n \neq 0$), jeżeli istnieje granica:
+    \begin{equation}
+        g = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| < 1,
+        \label{eq:dalembert_modul}
+    \end{equation}
+    to szereg $\sum a_n$ jest bezwzględnie zbieżny, a w konsekwencji zbieżny.
+
+    \item \textbf{Promień zbieżności szeregu potęgowego:}
+    Dla szeregu potęgowego $\sum c_n x^n$ o współczynnikach $c_n = \frac{1}{n!}$, promień zbieżności wynosi:
+    \begin{equation*}
+        R = \lim_{n \to \infty} \left|\frac{c_n}{c_{n+1}}\right| = \lim_{n \to \infty} \frac{(n+1)!}{n!} = \lim_{n \to \infty} (n+1) = \infty.
+    \end{equation*}
+    Oznacza to zbieżność na całej prostej rzeczywistej $\mathbb{R} = (-\infty, +\infty)$.
+\end{enumerate}
+\end{teoriabox}
+
+\vspace{0.2cm}
+
+\subsection*{Kolejne kroki formalnego dowodu}
+
+Ustalmy dowolną liczbę rzeczywistą $x \in \mathbb{R}$. Rozważamy wyraz ogólny szeregu:
+\begin{equation*}
+    a_n = \frac{x^n}{n!}, \quad n \in \mathbb{N}.
+\end{equation*}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Przypadek 1: $x = 0$.}
+    Dla $x = 0$ każdy wyraz ciągu wynosi:
+    \begin{equation*}
+        a_n = \frac{0^n}{n!} = 0 \quad \text{dla wszystkich } n \geqslant 1.
+    \end{equation*}
+    Suma częściowa $S_k = \sum_{n=1}^k 0 = 0$ jest ciągiem tożsamościowo stałym, którego granica wynosi $\lim S_k = 0$. Szereg jest w sposób oczywisty zbieżny.
+
+    \item \textbf{Przypadek 2: $x \neq 0$ (badanie zbieżności bezwzględnej).}
+    Dla $x \neq 0$ badamy szereg wartości bezwzględnych:
+    \begin{equation*}
+        \sum_{n=1}^{\infty} |a_n| = \sum_{n=1}^{\infty} \left| \frac{x^n}{n!} \right| = \sum_{n=1}^{\infty} \frac{|x|^n}{n!}.
+    \end{equation*}
+    Ponieważ $|x| > 0$, wszystkie wyrazy $b_n = \frac{|x|^n}{n!}$ są ściśle dodatnie ($b_n > 0$).
+
+    \item \textbf{Zastosowanie kryterium d'Alemberta.}
+    Badamy iloraz dwóch kolejnych wyrazów:
+    \begin{equation*}
+        \frac{b_{n+1}}{b_n} = \frac{\frac{|x|^{n+1}}{(n+1)!}}{\frac{|x|^n}{n!}} = \frac{|x|^{n+1}}{|x|^n} \cdot \frac{n!}{(n+1)!} = |x| \cdot \frac{n!}{(n+1) \cdot n!} = \frac{|x|}{n+1}.
+    \end{equation*}
+
+    \item \textbf{Obliczenie granicy ilorazu przy $n \to \infty$.}
+    Liczba $|x|$ jest ustaloną stałą (nie zależy od wskaźnika $n$). Zatem:
+    \begin{equation*}
+        g = \lim_{n \to \infty} \frac{b_{n+1}}{b_n} = \lim_{n \to \infty} \frac{|x|}{n+1} = |x| \cdot \lim_{n \to \infty} \frac{1}{n+1} = |x| \cdot 0 = 0.
+    \end{equation*}
+
+    \item \textbf{Wnioskowanie o zbieżności bezwzględnej.}
+    Niezależnie od wyboru wartości $x \neq 0$ granica wynosi:
+    \begin{equation*}
+        g = 0 < 1.
+    \end{equation*}
+    Z kryterium d'Alemberta wynika, że szereg modułów $\sum_{n=1}^{\infty} \frac{|x|^n}{n!}$ jest zbieżny dla każdego $x \neq 0$.
+
+    \item \textbf{Wniosek ostateczny.}
+    Ponieważ zbieżność bezwzględna pociąga za sobą zbieżność zwykłą, a przypadek $x=0$ jest trywialnie zbieżny, szereg $\displaystyle\sum_{n=1}^{\infty} \frac{x^n}{n!}$ jest \textbf{zbieżny dla dowolnego $x \in \mathbb{R}$}.
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{odpowiedzbox}[Podsumowanie Zadania 5]
+Wykazano, że szereg $\displaystyle\sum_{n=1}^{\infty} \frac{x^n}{n!}$ jest bezwzględnie zbieżny (a więc i zbieżny) na całym ciele liczb rzeczywistych $\mathbb{R}$. Silnia w mianowniku rośnie asymptotycznie szybciej niż dowolna funkcja wykładnicza $|x|^n$, co gwarantuje nieskończony promień zbieżności $R = \infty$. Szereg ten stanowi rozwinięcie funkcji wykładniczej pomniejszonej o jedynkę:
+\begin{equation*}
+    \sum_{n=1}^{\infty} \frac{x^n}{n!} = e^x - 1 \quad \text{dla każdego } x \in \mathbb{R}.
+\end{equation*}
+\end{odpowiedzbox}

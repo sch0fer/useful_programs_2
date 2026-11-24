@@ -1,0 +1,145 @@
+\section{Zadanie 4: Obliczanie n-tej sumy i badanie zbieżności szeregów}
+\label{sec:zadanie4}
+
+\begin{tresczadania}
+Obliczyć $n$-tą sumę i zbadać zbieżność szeregów:
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+    \item $\displaystyle \sum_{n=1}^{\infty} \ln\left(1 + \frac{1}{n}\right)$
+    \item $\displaystyle 1 + \sum_{n=2}^{\infty} \ln\left(1 - \frac{1}{n^2}\right)$
+\end{enumerate}
+\end{tresczadania}
+
+\vspace{0.2cm}
+
+\begin{teoriabox}
+\begin{enumerate}
+    \item \textbf{Ciąg sum częściowych ($n$-ta suma):}
+    Dla szeregu liczb rzeczywistych $\sum_{k=1}^{\infty} a_k$, ciąg sum częściowych definiuje się jako:
+    \begin{equation}
+        S_n \coloneqq \sum_{k=1}^{n} a_k = a_1 + a_2 + \dots + a_n.
+        \label{eq:partial_sum_def}
+    \end{equation}
+
+    \item \textbf{Definicja zbieżności szeregu:}
+    Szereg jest \textbf{zbieżny} wtedy i tylko wtedy, gdy istnieje skończona granica ciągu sum częściowych:
+    \begin{equation*}
+        S = \lim_{n \to \infty} S_n \in \mathbb{R}.
+    \end{equation*}
+    Wartość $S$ nazywamy \textbf{sumą szeregu}. Gdy granica jest nieskończona lub nie istnieje, szereg jest \textbf{rozbieżny}.
+
+    \item \textbf{Własności logarytmu naturalnego i iloczynów:}
+    Dla liczb dodatnich zachodzą prawa:
+    \begin{equation*}
+        \ln(x \cdot y) = \ln x + \ln y, \qquad \ln\left(\frac{x}{y}\right) = \ln x - \ln y \implies \sum_{k=1}^{n} \ln(u_k) = \ln\left( \prod_{k=1}^{n} u_k \right).
+    \end{equation*}
+
+    \item \textbf{Ciągłość funkcji logarytmicznej:}
+    Z uwagi na ciągłość funkcji $\ln$ na $(0, \infty)$, przejście graniczne można przenieść do argumentu logarytmu: $\lim \ln(u_n) = \ln(\lim u_n)$, o ile $\lim u_n > 0$.
+\end{enumerate}
+\end{teoriabox}
+
+\vspace{0.2cm}
+
+\subsection*{Rozwiązania szczegółowe}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (a): $\displaystyle \sum_{n=1}^{\infty} \ln\left(1 + \frac{1}{n}\right)$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Przekształcenie wyrazu ogólnego.}
+    Zapisujemy argument pod wspólnym mianownikiem i rozbijamy logarytm ilorazu:
+    \begin{equation*}
+        a_k = \ln\left(1 + \frac{1}{k}\right) = \ln\left(\frac{k+1}{k}\right) = \ln(k+1) - \ln k.
+    \end{equation*}
+
+    \item \textbf{Wyznaczenie $n$-tej sumy częściowej $S_n$.}
+    Zapisujemy sumę wyrazów od $k = 1$ do $n$:
+    \begin{align*}
+        S_n &= \sum_{k=1}^{n} \big( \ln(k+1) - \ln k \big) \\
+        &= (\ln 2 - \ln 1) + (\ln 3 - \ln 2) + (\ln 4 - \ln 3) + \dots + \big( \ln(n+1) - \ln n \big).
+    \end{align*}
+    Wyrazy pośrednie redukują się wzajemnie (zwijanie teleskopowe):
+    \begin{equation*}
+        S_n = \ln(n+1) - \ln 1 = \ln(n+1) - 0 = \ln(n+1).
+    \end{equation*}
+    (Iloczynowo: $S_n = \ln\left(\prod_{k=1}^n \frac{k+1}{k}\right) = \ln\left(\frac{2}{1} \cdot \frac{3}{2} \cdots \frac{n+1}{n}\right) = \ln(n+1)$).
+
+    \item \textbf{Badanie zbieżności szeregu.}
+    Obliczamy granicę sum częściowych przy $n \to \infty$:
+    \begin{equation*}
+        \lim_{n \to \infty} S_n = \lim_{n \to \infty} \ln(n+1) = +\infty.
+    \end{equation*}
+
+    \item \textbf{Wniosek.}
+    Ponieważ granica ciągu sum częściowych wynosi $+\infty$, szereg $\displaystyle\sum_{n=1}^{\infty} \ln\left(1 + \frac{1}{n}\right)$ jest \textbf{rozbieżny}.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\subsubsection*{Podpunkt (b): $\displaystyle 1 + \sum_{n=2}^{\infty} \ln\left(1 - \frac{1}{n^2}\right)$}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Faktoryzacja argumentu logarytmu.}
+    Dla $k \geqslant 2$ stosujemy wzór na różnicę kwadratów:
+    \begin{equation*}
+        1 - \frac{1}{k^2} = \frac{k^2 - 1}{k^2} = \frac{(k-1)(k+1)}{k^2} = \left(\frac{k-1}{k}\right) \cdot \left(\frac{k+1}{k}\right).
+    \end{equation*}
+
+    \item \textbf{Obliczenie sumy składników szeregu (od $k = 2$ do $n$).}
+    Oznaczmy sumę częściową samej sumy szeregu przez $T_n$:
+    \begin{equation*}
+        T_n = \sum_{k=2}^{n} \ln\left(1 - \frac{1}{k^2}\right) = \ln\left( \prod_{k=2}^{n} \frac{(k-1)(k+1)}{k^2} \right).
+    \end{equation*}
+    Rozbijamy iloczyn na dwa niezależne iloczyny teleskopowe $P_n$ i $Q_n$:
+    \begin{align*}
+        P_n &= \prod_{k=2}^{n} \frac{k-1}{k} = \frac{1}{2} \cdot \frac{2}{3} \cdot \frac{3}{4} \cdots \frac{n-1}{n} = \frac{1}{n}, \\
+        Q_n &= \prod_{k=2}^{n} \frac{k+1}{k} = \frac{3}{2} \cdot \frac{4}{3} \cdot \frac{5}{4} \cdots \frac{n+1}{n} = \frac{n+1}{2}.
+    \end{align*}
+    Iloczyn całkowity wynosi zatem:
+    \begin{equation*}
+        \prod_{k=2}^{n} \frac{(k-1)(k+1)}{k^2} = P_n \cdot Q_n = \frac{1}{n} \cdot \frac{n+1}{2} = \frac{n+1}{2n}.
+    \end{equation*}
+    Stąd:
+    \begin{equation*}
+        T_n = \ln\left(\frac{n+1}{2n}\right).
+    \end{equation*}
+
+    \item \textbf{Wyznaczenie $n$-tej sumy całego wyrażenia.}
+    Całe zadane wyrażenie zawiera początkowy wyraz $1$, stąd pełna $n$-ta suma wynosi:
+    \begin{equation*}
+        S_n = 1 + T_n = 1 + \ln\left(\frac{n+1}{2n}\right).
+    \end{equation*}
+
+    \item \textbf{Badanie zbieżności i obliczenie sumy szeregu.}
+    Obliczamy granicę przy $n \to \infty$:
+    \begin{equation*}
+        \lim_{n \to \infty} \frac{n+1}{2n} = \lim_{n \to \infty} \left(\frac{1}{2} + \frac{1}{2n}\right) = \frac{1}{2}.
+    \end{equation*}
+    Z ciągłości logarytmu:
+    \begin{equation*}
+        \lim_{n \to \infty} \ln\left(\frac{n+1}{2n}\right) = \ln\left(\frac{1}{2}\right) = -\ln 2.
+    \end{equation*}
+    Zatem granica sumy wynosi:
+    \begin{equation*}
+        S = \lim_{n \to \infty} S_n = 1 + \ln\left(\frac{1}{2}\right) = 1 - \ln 2.
+    \end{equation*}
+
+    \item \textbf{Wniosek.}
+    Granica $S$ istnieje i jest skończona ($S = 1 - \ln 2 \approx 0{,}3069$). Zatem szereg jest \textbf{zbieżny}, a jego suma wynosi $1 - \ln 2$.
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{odpowiedzbox}[Podsumowanie wyników Zadania 4]
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+    \item Szereg $\displaystyle\sum_{n=1}^{\infty} \ln\left(1 + \frac{1}{n}\right)$:
+    \begin{itemize}
+        \item $n$-ta suma częściowa: $\mathbf{S_n = \ln(n+1)}$,
+        \item Zbieżność: szereg jest \textbf{rozbieżny} ($\lim_{n\to\infty} S_n = +\infty$).
+    \end{itemize}
+    \item Wyrażenie $\displaystyle 1 + \sum_{n=2}^{\infty} \ln\left(1 - \frac{1}{n^2}\right)$:
+    \begin{itemize}
+        \item $n$-ta suma: $\mathbf{S_n = 1 + \ln\left(\frac{n+1}{2n}\right)}$,
+        \item Zbieżność: szereg jest \textbf{zbieżny}, a jego suma wynosi $\mathbf{S = 1 - \ln 2}$.
+    \end{itemize}
+\end{enumerate}
+\end{odpowiedzbox}

@@ -1,0 +1,95 @@
+\section{Zadanie 1: Suma współczynników dwumianowych Newtona}
+\label{sec:zadanie1}
+
+\begin{tresczadania}
+Udowodnij, że dla dowolnej liczby całkowitej $N \geqslant 0$ zachodzi tożsamość:
+\begin{equation*}
+    \sum_{k=0}^{N} \frac{N!}{k!(N-k)!} = 2^N.
+\end{equation*}
+\end{tresczadania}
+
+\vspace{0.2cm}
+
+\begin{teoriabox}
+\begin{enumerate}
+    \item \textbf{Definicja symbolu Newtona (współczynnika dwumianowego):}
+    Dla liczb całkowitych $N, k$ spełniających warunek $0 \leqslant k \leqslant N$, współczynnik dwumianowy $\binom{N}{k}$ definiuje się wzorem:
+    \begin{equation}
+        \binom{N}{k} \coloneqq \frac{N!}{k!(N-k)!},
+        \label{eq:newton_def}
+    \end{equation}
+    z formalną konwencją $0! = 1$. Określa on liczbę kombinacji $k$-elementowych ze zbioru $N$-elementowego.
+
+    \item \textbf{Twierdzenie o dwumianie Newtona:}
+    Dla dowolnych liczb rzeczywistych $a, b \in \mathbb{R}$ oraz wykładnika $N \in \mathbb{N}_0$:
+    \begin{equation}
+        (a + b)^N = \sum_{k=0}^{N} \binom{N}{k} a^{N-k} b^k.
+        \label{eq:binomial_theorem}
+    \end{equation}
+
+    \item \textbf{Interpretacja w teorii mnogości:}
+    Liczba wszystkich możliwych podzbiorów zbioru $N$-elementowego wynosi $|\mathcal{P}(X)| = 2^N$. Ponieważ każdy podzbiór ma moc $k \in \{0, 1, \dots, N\}$, a liczba podzbiorów o ustalonej mocy $k$ wynosi dokładnie $\binom{N}{k}$, całkowita liczba podzbiorów jest równa sumie $\sum_{k=0}^N \binom{N}{k} = 2^N$.
+\end{enumerate}
+\end{teoriabox}
+
+\vspace{0.2cm}
+
+\subsection*{Rozwiązanie krok po kroku}
+
+\subsubsection*{Metoda 1: Zastosowanie wzoru dwumianowego Newtona (analityczna)}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Identyfikacja składników sumy.}
+    Zauważamy, że lewa strona tezy $L$ składa się ze składników będących z definicji~\eqref{eq:newton_def} współczynnikami dwumianowymi:
+    \begin{equation*}
+        L = \sum_{k=0}^{N} \frac{N!}{k!(N-k)!} = \sum_{k=0}^{N} \binom{N}{k}.
+    \end{equation*}
+
+    \item \textbf{Wybór parametrów wzoru dwumianowego.}
+    Rozpatrujemy tożsamość dwumianową~\eqref{eq:binomial_theorem} dla szczególnego doboru stałych $a = 1$ oraz $b = 1$:
+    \begin{equation*}
+        (1 + 1)^N = \sum_{k=0}^{N} \binom{N}{k} \cdot 1^{N-k} \cdot 1^k.
+    \end{equation*}
+
+    \item \textbf{Uproszczenie potęg jedynki.}
+    Dla dowolnych wykładników całkowitych potęgi liczby $1$ są równe $1$, czyli $1^{N-k} = 1$ oraz $1^k = 1$. Zatem:
+    \begin{equation*}
+        (1 + 1)^N = \sum_{k=0}^{N} \binom{N}{k} \cdot 1 = \sum_{k=0}^{N} \binom{N}{k}.
+    \end{equation*}
+
+    \item \textbf{Obliczenie wartości lewej strony i wniosek.}
+    Ponieważ $1 + 1 = 2$, bezpośrednio otrzymujemy:
+    \begin{equation*}
+        2^N = \sum_{k=0}^{N} \binom{N}{k} = \sum_{k=0}^{N} \frac{N!}{k!(N-k)!}.
+    \end{equation*}
+    Lewa strona jest tożsamościowo równa prawej ($L = P$), co kończy dowód.
+\end{enumerate}
+
+\subsubsection*{Metoda 2: Dowód przez indukcję matematyczną (konstruktywny)}
+
+\begin{enumerate}[label=\textbf{Krok \arabic*.},leftmargin=*]
+    \item \textbf{Baza indukcji ($N = 0$).}
+    Dla $N = 0$ lewa strona wynosi:
+    \begin{equation*}
+        L_0 = \sum_{k=0}^{0} \frac{0!}{k!(0-k)!} = \frac{0!}{0! \cdot 0!} = \frac{1}{1 \cdot 1} = 1, \qquad P_0 = 2^0 = 1.
+    \end{equation*}
+    Zatem $L_0 = P_0$, baza indukcji jest prawdziwa.
+
+    \item \textbf{Założenie indukcyjne.}
+    Zakładamy, że dla ustalonego $N \geqslant 0$ zachodzi: $\sum_{k=0}^{N} \binom{N}{k} = 2^N$.
+
+    \item \textbf{Krok indukcyjny dla $N + 1$.}
+    Stosujemy tożsamość trójkąta Pascala $\binom{N+1}{k} = \binom{N}{k-1} + \binom{N}{k}$ dla $1 \leqslant k \leqslant N$:
+    \begin{align*}
+        \sum_{k=0}^{N+1} \binom{N+1}{k} &= \binom{N+1}{0} + \sum_{k=1}^{N} \left[ \binom{N}{k-1} + \binom{N}{k} \right] + \binom{N+1}{N+1} \\
+        &= 1 + \sum_{k=1}^{N} \binom{N}{k-1} + \sum_{k=1}^{N} \binom{N}{k} + 1 \\
+        &= \sum_{j=0}^{N} \binom{N}{j} + \sum_{k=0}^{N} \binom{N}{k} = 2^N + 2^N = 2 \cdot 2^N = 2^{N+1}.
+    \end{align*}
+    Na mocy zasady indukcji matematycznej tożsamość zachodzi dla każdego $N \in \mathbb{N}_0$.
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{odpowiedzbox}[Podsumowanie Zadania 1]
+Tożsamość $\displaystyle\sum_{k=0}^{N} \frac{N!}{k!(N-k)!} = 2^N$ została udowodniona dwoma niezależnymi, ścisłymi metodami. Stanowi ona analityczne odzwierciedlenie faktu, że suma wszystkich podzbiorów zbioru o mocy $N$ wynosi dokładnie $2^N$.
+\end{odpowiedzbox}

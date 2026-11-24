@@ -1,0 +1,79 @@
+# ==============================================================================
+# LaTeX .gitignore - Pliki pomocnicze i tymczasowe kompilacji LaTeX-a
+# ==============================================================================
+
+# Podstawowe pliki pomocnicze generowane przez silniki TeX (pdfLaTeX, LuaLaTeX, XeLaTeX)
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.fmt
+*.fot
+
+# Pliki synchronizacji z edytorem (SyncTeX / LaTeX Workshop / TeXstudio)
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+
+# Pliki bibliograficzne (BibTeX, Biber)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*-blx.aux
+*-blx.bib
+
+# Prezentacje Beamer
+*.nav
+*.snm
+*.vrb
+
+# Skorowidze i glosariusze (MakeIndex, Glossaries)
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.glg
+*.ist
+*.acn
+*.acr
+*.alg
+
+# Pliki pośrednie DVI / XDV
+*.dvi
+*.xdv
+
+# Pakiet minted i podświetlanie kodu
+_minted*
+*.pyg
+
+# TikZ / PGF / Gnuplot
+*.table
+*.gnuplot
+
+# Pliki tymczasowe edytorów, kopie zapasowe
+*~
+*.bak
+*.sav
+*.swp
+*.swo
+*.spl
+.DS_Store
+Thumbs.db
+
+# Wyjątki - upewniamy się, że pliki źródłowe oraz wynikowe PDF nie zostaną zignorowane
+!*.tex
+!*.pdf
+!*.bib
+!*.cls
+!*.sty
+!*.bst
+!*.png
+!*.jpg
+!*.jpeg
+!*.svg
